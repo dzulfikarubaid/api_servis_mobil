@@ -29,7 +29,7 @@ class ServisUpdate(APIView):
 class ServisDelete(APIView):
     def post(self,request,pk):
         try:
-            ServisObj=ServisModel.objects.get(pk=pk)
+            ServisObj=Servis.objects.get(pk=pk)
         except:
             return Response("Data not found")
         ServisObj.delete()
