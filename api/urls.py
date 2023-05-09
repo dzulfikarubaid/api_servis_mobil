@@ -21,5 +21,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.ServisTable.as_view()),
+    path('update/<int:pk>', views.ServisUpdate.as_view()),
+    path('delete/<int:pk>', views.ServisDelete.as_view()),
 
 ]

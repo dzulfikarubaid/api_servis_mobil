@@ -14,3 +14,23 @@ class ServisTable(APIView):
             serializeObj.save()
             return Response(200)
         return Response(serializeObj.errors)
+class ServisUpdate(APIView):
+    def post(self,request,pk):
+        try:
+            ServisObj=Servis.objects.get(pk=pk)
+        except:
+            return Response("Data not found")
+        serializeObj = ServisSerializer(ServisObj,data=request.data)
+        if serializeObj.is_valid():
+            serializeObj.save()
+            return Response(200)
+        return Response(serializeObj.errors)
+
+class ServisDelete(APIView):
+    def post(self,request,pk):
+        try:
+            ServisObj=ServisModel.objects.get(pk=pk)
+        except:
+            return Response("Data not found")
+        ServisObj.delete()
+        return Response(200)
